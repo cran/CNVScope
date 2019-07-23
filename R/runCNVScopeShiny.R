@@ -1,6 +1,8 @@
 #' Runs the CNVScope plotly shiny application.
 #'
 #' Runs the interactive suite of tools locally or on a server if called in a script file (e.g. App.R).
+#' Data sources are required.
+#' For a simple installation, please use the runCNVScopeLocal function.
 #' @name runCNVScopeShiny
 #' @keywords CNV heatmap shiny plotly
 #' @import shinycssloaders shinythemes visNetwork ggplot2 reshape2 magrittr htmltools htmlwidgets jointseg logging foreach GenomicInteractions shinythemes
@@ -15,18 +17,35 @@
 #' @rawNamespace import(GenomicFeatures ,except = show)
 #' @param baseurl the url of the source files for the application (e.g. the contents of plotly_dashboard_ext). This will be pulled from remotely.
 #' @param basefn the linux file path of the same source files.
+#' @param debug Enable debugging output.
+#' @param useCNVScopePublicData Use files from the CNVScopePublicData package.
 #' @return none. Runs the application if the correct files are present.
 #' @examples
+#' #see runCNVScopeLocal(useCNVScopePublicData=T).
 #' \dontrun{
-#' runCNVScopeShiny()
+#' runCNVScopeShiny(useCNVScopePublicData=T)
 #' }
 #' @export
-globalVariables(c("common_coords_linreg","chrom.pairs","expression_data_gr"))
-chrom.pairs<-NULL
+#globalVariables(c("common_coords_linreg","expression_data_gr","chrom.pairs","."), add=F)
 
 
-runCNVScopeShiny<-function(baseurl=NULL,basefn=NULL) {
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
+runCNVScopeShiny<-function(baseurl=NULL,basefn=NULL, debug=F, useCNVScopePublicData=F) {
+  menu <- if(exists("menu")){get("menu")} else {NULL}
+  browse <- if(exists("browse")){get("browse")} else {NULL}
+  if(useCNVScopePublicData)
+{
+if (!file.exists(system.file("plotly_dashboard_ext","censushg19.rds",
+                            package = "CNVScopePublicData"))
+    ) {
+    cat("CNVScopeData package not detected. Install now?")
+    install <- menu(c("yes", "no"))
+    if(install==1){remotes::install_github("jamesdalg/CNVscope_public_data")}
+}
+    basefn=paste0(system.file("plotly_dashboard_ext/",package = "CNVScopePublicData"),"/")
+}
+chrom.pairs<-NULL  
+options(scipen=999)
+#if(getRversion() >= "2.15.1")  utils::globalVariables(c("."),add=F)
   
 head.matrix<-function(mat,n=6L)
 {
@@ -41,6 +60,7 @@ options(shiny.error = browser)
 options(shiny.fullstacktrace = TRUE)
 getOption("repos")
 options(shiny.sanitize.errors = F)
+if(is.null(baseurl)&is.null(basefn)) {
 if(Sys.info()["nodename"]=="ncias-d2037-v.nci.nih.gov" | Sys.info()["nodename"]=="plotly.nci.nih.gov")
 {
   baseurl<-"file:///srv/shiny-server/plotly_dashboard/"
@@ -56,39 +76,45 @@ if(Sys.info()["nodename"]=="NCI-02105037-L")
   #baseurl<-"file:///W:/dalgleishjl/hicnv/"
   basefn<-"W:/dalgleishjl/hicnv/"
 }
+}
+   if(debug){browser()}
 baseurl<<-baseurl
 basefn<<-basefn
-tryCatch(bin_data<-readRDS((url(paste0(baseurl,"plotly_dashboard_ext/bin_data.rds")))),error = function(e) NULL) 
-tryCatch(bin_data<-readRDS((paste0(basefn,"plotly_dashboard_ext/bin_data.rds"))),error = function(e) NULL) 
+#tryCatch(bin_data<-readRDS((url(paste0(baseurl,"bin_data.rds")))),error = function(e) NULL) 
+#tryCatch(bin_data<-readRDS((paste0(basefn,"bin_data.rds"))),error = function(e) NULL) 
 chromosomes<<-paste0("chr",c(seq(1:22),"X"),"_")
 options(shiny.error = function() { 
   logging::logerror(sys.calls() %>% as.character %>% paste(collapse = ", ")) })
-tryCatch(load(url(paste0(paste0(baseurl,"plotly_dashboard_ext/common_coords_linreg.RData")))),error = function(e) NULL)
-tryCatch(load(paste0(paste0(basefn,"plotly_dashboard_ext/common_coords_linreg.RData"))),error = function(e) NULL)
+#tryCatch(load(url(paste0(paste0(baseurl,"common_coords_linreg.RData")))),error = function(e) NULL)
+#tryCatch(load(paste0(paste0(basefn,"common_coords_linreg.RData"))),error = function(e) NULL)
 
-chromstarts_linreg<-unlist(foreach(i=1:length(1:length(chromosomes))) %do% {grep(chromosomes[i],common_coords_linreg)[1]})
+#chromstarts_linreg<-unlist(foreach(i=1:length(1:length(chromosomes))) %do% {grep(chromosomes[i],common_coords_linreg)[1]})
 swap_row_col_genes=F
 chrom.pairs<<-expand.grid(1:length(chromosomes),1:length(chromosomes))
 chromosomes<-paste0("chr",c(seq(1:22),"X"),"_")
+   if(debug){browser()}
 if(exists("basefn")) {#local objects:
-  tryCatch(freq_data<-data.table::fread(paste0(basefn,"plotly_dashboard_ext/OS_freq_data.txt")),error = function(e) NULL)
-  tryCatch(breakpoint_gint_full<-readRDS(paste0(basefn,"plotly_dashboard_ext/breakpoint_gint_full.rds")),error = function(e) NULL)
-  tryCatch(expression_data_gr<-readRDS(paste0(basefn,"plotly_dashboard_ext/expression_data_gr.rds")),error = function(e) NULL)
-  tryCatch(expression_data_gr_nbl<-readRDS(paste0(basefn,"plotly_dashboard_ext/tcga_nbl_expression.rds")),error = function(e) NULL)
-  tryCatch(bin_data_gr<-readRDS(paste0(basefn,"plotly_dashboard_ext/bin_data_gr.rds")),error = function(e) NULL)
-  #tryCatch(census_data_gr<-readRDS(paste0(basefn,"plotly_dashboard_ext/census_data_gr.rds")),error = function(e) NULL)
-  tryCatch(census_data_gr<-readRDS(paste0(basefn,"plotly_dashboard_ext/censushg19.rds")),error = function(e) NULL)
-  tryCatch(ensembl_gene_tx_data_gr<-readRDS(paste0(basefn,"plotly_dashboard_ext/ensembl_gene_tx_table_gr.rds")),error = function(e) NULL)
+  # tryCatch(freq_data<-data.table::fread(paste0(basefn,"OS_freq_data.txt")),error = function(e) NULL)
+#  tryCatch(breakpoint_gint_full<-readRDS(paste0(basefn,"breakpoint_gint_full.rds")),error = function(e) NULL)
+#  tryCatch(expression_data_gr<-readRDS(paste0(basefn,"expression_data_gr.rds")),error = function(e) NULL)
+  tryCatch(expression_data_gr_nbl<-readRDS(paste0(basefn,"tcga_nbl_expression.rds")),error = function(e) NULL)
+   if(debug){browser()}
+  
+#  tryCatch(bin_data_gr<-readRDS(paste0(basefn,"bin_data_gr.rds")),error = function(e) NULL)
+  #tryCatch(census_data_gr<-readRDS(paste0(basefn,"census_data_gr.rds")),error = function(e) NULL)
+  tryCatch(census_data_gr<-readRDS(paste0(basefn,"censushg19.rds")),error = function(e) NULL)
+  tryCatch(ensembl_gene_tx_data_gr<-readRDS(paste0(basefn,"ensembl_gene_tx_table_gr.rds")),error = function(e) NULL)
 } else {
   if(exists("baseurl"))
-  {tryCatch(freq_data<-data.table::fread(paste0(baseurl,"plotly_dashboard_ext/OS_freq_data.txt")),error = function(e) NULL)
-    tryCatch(breakpoint_gint_full<-readRDS(url(paste0(baseurl,"plotly_dashboard_ext/breakpoint_gint_full.rds"))),error = function(e) NULL)
-    tryCatch(expression_data_gr<-readRDS(url(paste0(baseurl,"plotly_dashboard_ext/expression_data_gr.rds"))),error = function(e) NULL)
-    tryCatch(expression_data_gr_nbl<-readRDS(url(paste0(baseurl,"plotly_dashboard_ext/tcga_nbl_expression.rds"))),error = function(e) NULL)
-    tryCatch(bin_data_gr<-readRDS(url(paste0(baseurl,"plotly_dashboard_ext/bin_data_gr.rds"))),error = function(e) NULL)
-    #tryCatch(census_data_gr<-readRDS(url(paste0(baseurl,"plotly_dashboard_ext/census_data_gr.rds"))),error = function(e) NULL)
-    tryCatch(census_data_gr<-readRDS(paste0(basefn,"plotly_dashboard_ext/censushg19.rds")),error = function(e) NULL)
-    tryCatch(ensembl_gene_tx_data_gr<-readRDS(url(paste0(baseurl,"plotly_dashboard_ext/ensembl_gene_tx_table_gr.rds"))),error = function(e) NULL)
+  {tryCatch(freq_data<-data.table::fread(paste0(baseurl,"OS_freq_data.txt")),error = function(e) NULL)
+    tryCatch(breakpoint_gint_full<-readRDS(url(paste0(baseurl,"breakpoint_gint_full.rds"))),error = function(e) NULL)
+    tryCatch(expression_data_gr<-readRDS(url(paste0(baseurl,"expression_data_gr.rds"))),error = function(e) NULL)
+    tryCatch(expression_data_gr_nbl<-readRDS(url(paste0(baseurl,"tcga_nbl_expression.rds"))),error = function(e) NULL)
+    tryCatch(bin_data_gr<-readRDS(url(paste0(baseurl,"bin_data_gr.rds"))),error = function(e) NULL)
+    #tryCatch(census_data_gr<-readRDS(url(paste0(baseurl,"census_data_gr.rds"))),error = function(e) NULL)
+    browse()
+    tryCatch(census_data_gr<-readRDS(paste0(basefn,"censushg19.rds")),error = function(e) NULL)
+    tryCatch(ensembl_gene_tx_data_gr<-readRDS(url(paste0(baseurl,"ensembl_gene_tx_table_gr.rds"))),error = function(e) NULL)
   }
 }
 CNVScopeui<-fluidPage(theme=shinytheme("flatly"), #shinythemes::themeSelector() 
@@ -97,7 +123,7 @@ CNVScopeui<-fluidPage(theme=shinytheme("flatly"), #shinythemes::themeSelector()
                               ".shiny-output-error:before { visibility: hidden; }"),
                    # Application title
                    titlePanel("Plotly Interchromosomal Heatmaps"),
-                   
+                   uiOutput("privpol"),
                    # Sidebar with a slider input for number of bins 
                    tabsetPanel(id = "tabs",tabPanel("Controls",fluidRow(column(width=2,offset = 1,
                                                                                #sidebarPanel(position="right",

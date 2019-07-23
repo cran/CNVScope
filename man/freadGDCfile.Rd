@@ -4,12 +4,22 @@
 \alias{freadGDCfile}
 \title{Read GDC segmentation datafile for low-pass sequencing data.}
 \usage{
-freadGDCfile(file, fread_skip = 14)
+freadGDCfile(file, fread_skip = NULL, format = "TARGET",
+  CN_colname = "log2", sample_pattern = "[^_]+",
+  sample_colname = NULL)
 }
 \arguments{
 \item{file}{GDC file to be read}
 
-\item{fread_skip}{The number of metadata lines to be skipped(typically 14)..}
+\item{fread_skip}{The number of metadata lines to be skipped(typically 14)}
+
+\item{format}{The format of the files (TCGA,TARGET, or custom).}
+
+\item{CN_colname}{The name of the column containing the copy number values.}
+
+\item{sample_pattern}{Regex pattern to obtain the sample ID from the filename.}
+
+\item{sample_colname}{Alternatively, a column can be specified with the sample ID on each line.}
 }
 \value{
 input_tsv_with_sample_info A data frame containing the sample information extracted
@@ -22,6 +32,9 @@ Reads a GDC segmetnation file and extract the segmetnation data.
 freadGDCfile(file =
 system.file("extdata","somaticCnvSegmentsDiploidBeta_TARGET-30-PANRVJ_NormalVsPrimary.tsv",
 package = "CNVScope"))
+}
+\references{
+https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/
 }
 \keyword{file}
 \keyword{read}
