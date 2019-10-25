@@ -1,7 +1,7 @@
-2dee9db5b67ed967821ebb01e1a3cf1d *DESCRIPTION
+685cbe0664b5605889cd7d8258a16548 *DESCRIPTION
 7f86a1c1e8e5bb5533088de51ae0e6cd *LICENSE
 cedc2ec20af3d004b684db512f431ba0 *NAMESPACE
-749b3c41550784992caf39aa5e789e49 *NEWS.md
+8bd540fd42a131ca7d5876dac6af6577 *NEWS.md
 b9fd45315bb7bbf3ee7c60d3e08436e4 *R/CNVScopeserver.R
 9deb2f82f164d97c8be810de327ccf36 *R/GRanges_to_underscored_pos.R
 90fdf0c988c9a981e5e7bf21ee6a8278 *R/averageMatrixEdges.R
@@ -13,7 +13,7 @@ bf5f8b27ef8cfae9e38a36b97be4dac5 *R/downsample_genomic_matrix.R
 95bf91f385c674ebaa2ea262c65d0d7b *R/formSampleMatrixFromRawGDCData.R
 3ebe4d3f5aabceeb471dae8cd438ceab *R/freadGDCfile.R
 065155f9bee9dd0726575cf551e123e6 *R/getAnnotationMatrix.R
-f90840cd315a254b20543a4bcb814847 *R/getAsymmetricBlockIndices.R
+b3182e8e9e09714d0c194334c980f7b7 *R/getAsymmetricBlockIndices.R
 3ca40b27135ce08827c3f41992d34682 *R/getBlockAverageMatrixFromBreakpoints.R
 9226ec7f0c459de8b0d3f6138e75636a *R/getGlobalRescalingStats.R
 f48df2cf03ed784a118e8177d8d8421c *R/getInterchromosomalInteractivePlot.R
@@ -61,7 +61,7 @@ ef6da51cc556af8110d778d0d7ccb6a8 *man/extractNegLogPval.Rd
 d2f1ad4da5a014856464c9daa9d62b6c *man/formSampleMatrixFromRawGDCData.Rd
 640b135f361b703434bf154a0f079b6f *man/freadGDCfile.Rd
 f184d8f927471653648e5a338f39307d *man/getAnnotationMatrix.Rd
-455bb785e201ad89bb950a015450faca *man/getAsymmetricBlockIndices.Rd
+5eba88fd0db75ab3ae655a7ccaa744c6 *man/getAsymmetricBlockIndices.Rd
 1f8e5b67914d4360e6fdf9476580b8d2 *man/getBlockAverageMatrixFromBreakpoints.Rd
 d0b42a159b530b641bfad54cdb70317e *man/getGlobalRescalingStats.Rd
 8cd19161a7c3aab13a826ecbf9b17db4 *man/getInterchromosomalInteractivePlot.Rd
