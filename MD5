@@ -1,7 +1,7 @@
-6bd955280e2ca028dff07d0eab4d90bb *DESCRIPTION
+bf8f6fe07ad56cc7f39dc80a02cd6cda *DESCRIPTION
 7f86a1c1e8e5bb5533088de51ae0e6cd *LICENSE
 cedc2ec20af3d004b684db512f431ba0 *NAMESPACE
-7fbac2433a3193b9c02b76105c00b8d1 *NEWS.md
+9c625b4a24f023b997e2f059e2942326 *NEWS.md
 b9fd45315bb7bbf3ee7c60d3e08436e4 *R/CNVScopeserver.R
 9deb2f82f164d97c8be810de327ccf36 *R/GRanges_to_underscored_pos.R
 90fdf0c988c9a981e5e7bf21ee6a8278 *R/averageMatrixEdges.R
