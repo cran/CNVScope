@@ -1,4 +1,4 @@
-964503fd7b11942348c66522761fb4a4 *DESCRIPTION
+87e81a115321a796a1e32cfbb495fdfb *DESCRIPTION
 7f86a1c1e8e5bb5533088de51ae0e6cd *LICENSE
 145809288e141972a66fb244f64d9bab *NAMESPACE
 9c625b4a24f023b997e2f059e2942326 *NEWS.md
@@ -30,9 +30,9 @@ af199c85ee585921da3c9242e7bd2b53 *R/writeAsymmetricMeltedMatrixToDisk.R
 ae9e6d989648751505ec9ae4dbbc2bb0 *R/writeMeltedChromosomalMatrixToDisk.R
 c83ee39760821047ddbaee1994434869 *build/vignette.rds
 aeda73c6819b4732a2a66290d06dcbdb *data/nbl_result_matrix_sign_small.rda
-ca075910398d2d922d70599c4d7b016a *inst/doc/additonal_examples.R
-7859e55e1a7b16c2775443ab6e9237d3 *inst/doc/additonal_examples.Rmd
-704d5e97a70549e28c5ba186d002ac4c *inst/doc/additonal_examples.html
+9d01031b7de2015bc4e348dee2990152 *inst/doc/additonal_examples.R
+b786f9fe73c9cf59f658c7a4a618af5f *inst/doc/additonal_examples.Rmd
+fc18ba56142c7b71bbf20a316fea6bba *inst/doc/additonal_examples.html
 faac5e9af01acc77e7ccdcb76d3a58f3 *inst/doc/create_input_matrix.R
 1af1c9c67f1892a9f5b004f54a95e059 *inst/doc/create_input_matrix.Rmd
 28e875e893e312502fdd4f54ebf1c6a5 *inst/doc/create_input_matrix.html
@@ -82,7 +82,7 @@ a4c8a89eec933db69cf40611c5b01625 *vignettes/NBL_custom_sample_matched_input_matr
 dde22948579400799902531e4fefde2c *vignettes/NBL_custom_sample_matched_input_matrix_2.5e5binsize_parallel.rds
 82a6feac06b5168245d8b90fc94e3032 *vignettes/NBL_data_files.png
 c219e11db786238b9bb6d91f25f57a87 *vignettes/NBL_sample_matched_input_matrix.rds
-7859e55e1a7b16c2775443ab6e9237d3 *vignettes/additonal_examples.Rmd
+b786f9fe73c9cf59f658c7a4a618af5f *vignettes/additonal_examples.Rmd
 e6a4ba99492fe5c8afa102120a8249a7 *vignettes/aml_sample_matched_input_matrix.rds
 a37f64db7c072fae260763ea2b0424ac *vignettes/blca_sample_matched_input_matrix.rds
 7e0f90ee65364ae4533e044acba5c615 *vignettes/chr11_1e5_nbl.jpg
