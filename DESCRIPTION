@@ -2,7 +2,7 @@ Package: CNVScope
 Type: Package
 Title: A Versatile Toolkit for Copy Number Variation Relationship Data
         Analysis and Visualization
-Version: 3.0.8
+Version: 3.0.9
 Date: 2020-4-28
 Author: James Dalgeish, Yonghong Wang, Jack Zhu, Paul Meltzer
 Maintainer: James Dalgleish <james.dalgleish@nih.gov>
@@ -19,6 +19,6 @@ License: BSD_3_clause + file LICENSE
 RoxygenNote: 7.1.0
 LazyData: true
 NeedsCompilation: no
-Packaged: 2020-04-28 11:17:07 UTC; dalgleishjl
+Packaged: 2020-04-29 01:19:49 UTC; dalgleishjl
 Repository: CRAN
-Date/Publication: 2020-04-28 12:10:12 UTC
+Date/Publication: 2020-04-29 08:20:10 UTC
