@@ -1,7 +1,7 @@
-e3deb39d16623860c964d87835342eae *DESCRIPTION
+dffb0fb9570506e79955aec32bcf368d *DESCRIPTION
 7f86a1c1e8e5bb5533088de51ae0e6cd *LICENSE
 d64bcb05d7077fe50920aa26d3d064af *NAMESPACE
-ac895d2f8af2a9044541fc951e387b4f *NEWS.md
+5baceb06e0174ce146b8f1bdcce8480f *NEWS.md
 88aa5b2e325fbebb6dfdeee2ae9771bd *R/CNVScopeserver.R
 6fb1653c0cf0a96c0734dc3993174513 *R/GRanges_to_underscored_pos.R
 90fdf0c988c9a981e5e7bf21ee6a8278 *R/averageMatrixEdges.R
@@ -21,7 +21,7 @@ dde3aec537b39ce5c07e9543b6e1f98c *R/importBreakpointBed.R
 c1a1fbd43ce79bf271c8cbcc3250dfe3 *R/mathead.R
 a382ed970526d0ce9890db957024ef4b *R/nbl_result_matrix_sign_small.R
 7c37939e100c256b4f5d3a3417461d1d *R/postProcessLinRegMatrix.R
-93c2a1d8647f0b503f7d29cdb8cf285c *R/rebinGenomicInteractions.R
+6533d83c634f4ab46e826a77c8b78a2c *R/rebinGenomicInteractions.R
 aec716c9edb7ffe554bbb11a88feaa7a *R/runCNVScopeLocal.R
 ea4e785295e0830339aa450386867480 *R/runCNVScopeShiny.R
 c9febf9fdaeeaf9972eeedad1162212c *R/signedRescale.R

@@ -1,3 +1,7 @@
+CNVScope v3.3.9 (Release Date 2020-12-04)
+==============
+*Made conditional InteractionSet to make OSX installation more seamless.
+
 CNVScope v3.3.7 (Release Date 2020-11-28)
 ==============
 *Resubmit due to CRAN submission system bug
