@@ -1,4 +1,20 @@
-CNVScope v3.3.9 (Release Date 2020-12-04)
+CNVScope v3.4.5 (Release Date 2021-01-07)
+==============
+*Bug fixes related to the suggested plotly dependency.
+
+CNVScope v3.4.3 (Release Date 2021-01-05)
+==============
+*Moved the plotly package to suggests because it has been temporarily orphaned.
+
+CNVScope v3.4.2 (Release Date 2021-01-04)
+==============
+*Made package check successfully without suggested dependencies.
+
+CNVScope v3.4.0 (Release Date 2020-12-15)
+==============
+*Made conditional BSgenome.Hsapiens.UCSC.hg19 to improve OSX installation.
+
+CNVScope v3.3.9 (Release Date 2020-12-14)
 ==============
 *Made conditional InteractionSet to make OSX installation more seamless.
 
