@@ -68,6 +68,15 @@ visval <- if(exists("visval")){get("visval")} else {NULL}
   privpolurl <- a("NCI Privacy Policy", href="https://www.cancer.gov/policies/privacy-security",target="_blank")
   output$privpol <- renderUI({
     tagList(privpolurl)})
+  accesspolurl <- a("Accessibility", href="https://www.cancer.gov/policies/accessibility",target="_blank")
+  output$accesspol <- renderUI({
+    tagList(accesspolurl)})
+  foiapolurl <- a("FOIA", href="https://www.cancer.gov/policies/foia",target="_blank")
+  output$foiapol <- renderUI({
+    tagList(foiapolurl)})
+  vulnpolurl <- a("HHS Vulnerability Disclosure", href="https://www.hhs.gov/vulnerability-disclosure-policy/index.html",target="_blank")
+  output$vulnpol <- renderUI({
+    tagList(vulnpolurl)})
   downsample_factor<-NULL
   subset_name<-NULL
   #expression_data_gr_nbl<-NULL
@@ -706,7 +715,7 @@ if(!isolate(input$genes_toggle)){
   outputOptions(output,"plotlyChromosomalHeatmap",suspendWhenHidden=F)
   output$whole_genome_image<-renderImage({
   #output$whole_genome_image<-renderUI({
-    #https://community.rstudio.com/t/shinydashboard-render-only-the-clicked-tab/36493
+    #https://forum.posit.co/t/shinydashboard-render-only-the-clicked-tab/36493
     input$whole_genome_max_cap
     input$goButton
     #browser()

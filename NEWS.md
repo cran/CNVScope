@@ -1,3 +1,15 @@
+CNVScope v3.7.5 (Release Date 2026-07-03)
+==============
+*Updated the maintainer email address to a working contact, as requested by CRAN.
+
+CNVScope v3.7.4 (Release Date 2026-06-09)
+==============
+*Removed the HiCseg dependency, which was archived from CRAN. getAsymmetricBlockIndices() now defaults to algorithm="jointSeg"; HiCseg is still used where it is installed.
+
+CNVScope v3.7.3 (Release Date 2022-08-12)
+==============
+*Updated NCI Policies on Server UI
+
 CNVScope v3.6.1 (Release Date 2021-06-17)
 ==============
 *Minor change to ensure compatibility with multiple datasets.

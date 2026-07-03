@@ -3,7 +3,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(CNVScope)
 library(magrittr)
 
-## ---- knit='asis'-------------------------------------------------------------
+## ----knit='asis'--------------------------------------------------------------
  if (requireNamespace("pwr", quietly = TRUE)) {
    library(pwr)
 large.effect.size<-pwr::cohen.ES(test="f2",size="large")$effect.size
