@@ -2,7 +2,7 @@ Package: CNVScope
 Type: Package
 Title: A Versatile Toolkit for Copy Number Variation Relationship Data
         Analysis and Visualization
-Version: 3.7.9
+Version: 3.7.10
 Date: 2026-11-19
 Authors@R: c(person(given = "James", family = "Dalgleish",
                     role = c("aut", "cre"), email = "jamesdalg@gmail.com",
@@ -30,7 +30,7 @@ Encoding: UTF-8
 LazyData: true
 Config/roxygen2/version: 8.0.0
 NeedsCompilation: no
-Packaged: 2026-11-19 10:19:26 UTC; jd
+Packaged: 2026-11-19 11:28:52 UTC; jd
 Author: James Dalgleish [aut, cre] (Alternate contact:
     james.dalgleish@keble.ox.ac.uk),
   Yonghong Wang [aut],
@@ -38,4 +38,4 @@ Author: James Dalgleish [aut, cre] (Alternate contact:
   Paul Meltzer [aut, sad]
 Maintainer: James Dalgleish <jamesdalg@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-11-19 11:20:28 UTC
+Date/Publication: 2026-11-19 13:20:02 UTC
