@@ -1,3 +1,19 @@
+CNVScope v3.7.9 (Release Date 2026-11-19)
+==============
+*Fixed the rebinGenomicInteractions() example error reported by CRAN on
+r-devel-linux-x86_64-debian-gcc and r-devel-linux-x86_64-fedora-gcc ("no method
+for coercing this S4 class to a vector"). S4Vectors 0.51 (Bioconductor devel)
+changed the S3 method as.data.frame.Vector() to stop re-dispatching to the S4
+as.data.frame() generic, so base as.data.frame() on a GenomicInteractions object
+no longer reached the GInteractions method. rebinGenomicInteractions() now calls
+the S4 generic (S4Vectors::as.data.frame()) directly. Its output is unchanged.
+
+CNVScope v3.7.8 (Release Date 2026-09-10)
+==============
+*Resubmission of 3.7.7, which was superseded in the CRAN queue before release.
+The package code is identical; only the version number and the submission
+comments differ.
+
 CNVScope v3.7.7 (Release Date 2026-09-10)
 ==============
 *Fixed the "Rd files without \usage" NOTE reported by CRAN on
